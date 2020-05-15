@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table {border:5px solid black;
+           width:100%;
+           text-align: center}
+    .days {border:3px solid black;
+            text-align: right;
+        padding: 10px;}
+    th {padding:10px;}
+</style>
+</head>
+<body>
+    <table id="Meals">
+    <tr id="Mealsheader">
+        <th>Day</th>
+        <th>Meat</th>
+        <th>Vegetable</th>
+        <th>Soup</th>
+        <th>Extra</th>
+        
+        </tr>
+    <tr id="Monday">
+        <td class="days"> Monday </td>
+        <td id="MondayMeat">-</td>
+        <td id="MondayVege">-</td>
+        <td id="MondaySoup">-</td>
+        <td id="MondayExtra">-</td>
+            
+        </tr>
+    <tr id="Tuesday">
+        <td class="days"> Tuesday </td>
+        <td id="TuesdayMeat">-</td>
+        <td id="TuesdayVege">-</td>
+        <td id="TuesdaySoup">-</td>
+        <td id="TuesdayExtra">-</td>
+        </tr>
+    <tr id="Wednesday">
+        <td class="days"> Wednesday </td>
+        <td id="WednesdayMeat">-</td>
+        <td id="WednesdayVege">-</td>
+        <td id="WednesdaySoup">-</td>
+        <td id="WednesdayExtra">-</td>
+        </tr>
+    <tr id="Thursday">
+        <td class="days"> Thursday </td>
+        <td id="ThursdayMeat">-</td>
+        <td id="ThursdayVege">-</td>
+        <td id="ThursdaySoup">-</td>
+        <td id="ThursdayExtra">-</td>
+        </tr>
+    <tr id="Friday">
+        <td class="days"> Friday </td>
+        <td id="FridayMeat">-</td>
+        <td id="FridayVege">-</td>
+        <td id="FridaySoup">-</td>
+        <td id="FridayExtra">-</td>
+        </tr>
+    <tr id="Saturday">
+        <td class="days"> Saturday </td>
+        <td id="SaturdayMeat">-</td>
+        <td id="SaturdayVege">-</td>
+        <td id="SaturdaySoup">-</td>
+        <td id="SaturdayExtra">-</td>
+        </tr>
+    <tr id="Sunday">
+        <td class="days"> Sunday </td>
+        <td id="SundayMeat">-</td>
+        <td id="SundayVege">-</td>
+        <td id="SundaySoup">-</td>
+        <td id="SundayExtra">-</td>
+        </tr>
+        
+    
+    
+    </table>
+    <button type="button" onclick="Mealplan()">It's Sunday and you don't know what to buy at the market...</button>
+    
+    <button type="button" onclick="nextDay()">nextDay test</button>
+    
+    <button type="button" onclick="planDay()">planDay</button>
+    
+    <button type="button" onclick="createplan()">create plan. It'll create a week's worth of food</button>
+    
+    <button type="button" onclick="sniffingdogg()"> tests are... </button>
+    <button type="button" onclick="Mealplan()">everything</button>
+    
+    
+    
+    <script>
+function Mealplan(){
+    createplan();
+    assembleplan();
+    
+}
+        //rows 1 to 8
+        //cells 1 to 4
+//
+        
+function assembleplan(){
+    //this function replaces the week's meals with the 
+    tablepls = document.getElementById("Meals");
+    var chonk;
+    for (chonk = 0; chonk<weekMeals.length;chonk++){
+             tablepls.rows[chonk+1].cells[1].innerHTML = weekMeals[chonk]["meat"];
+             console.log("replaced vege");
+             tablepls.rows[chonk+1].cells[2].innerHTML = weekMeals[chonk]["vege"];
+             console.log("replaced meat");
+             tablepls.rows[chonk+1].cells[3].innerHTML = weekMeals[chonk]["soup"];
+             console.log("replaced soup");
+             tablepls.rows[chonk+1].cells[4].innerHTML = weekMeals[chonk]["extra"];
+             console.log("replaced extra");
+             console.log(String(weekMeals[chonk]["day"]) + " done.");
+             }
+    ;};
+        
+var testweekMeals = [{day:"Monday", vege:"Kangkong Stir Fry", meat:"Steamed Chicken", soup:"-", extra:"Fried Egg"},{day:"Tuesday", vege:"Xiao Bai Cai", meat: "-", soup:"Black Sauce Egg", extra:"-"}]
+
+var dayMeals ={day:0,vege:"-",meat:"-",soup:"-",extra:"-",vegeval:0,meatval:0,extraval:0,kval:0,soupval:0};
+var weekMeals = [];
+        
+function sniffingdogg(){
+    dayMeals.meat = "The doggo arrives";
+    console.log(JSON.stringify(dayMeals));
+    console.log(weekMeals); //code was used to test the shallow-copy hypothesis
+    
+}        
+function createplan(){
+    //this function simply collates dayMeals into weekMeals, which is used by assembleplan() to repalce the table elements.
+
+
+var whichday;
+    for (whichday=0;whichday<=6;whichday++){
+        dayMeals["day"] = whichday.toString();
+        console.log("It's day " + dayMeals.day);
+        planDay();
+        console.log(dayMeals);
+
+        var holdingcell = JSON.parse(JSON.stringify(dayMeals));
+        
+        weekMeals.push(holdingcell);
+        if(whichday<6){
+        nextDay();    
+        }
+              
+    //    console.log("Meal planned for day " + whichday + "!" );
+        console.log("in the whichday loop");
+        console.log(weekMeals);
+        
+    };
+    console.log("Out of loop");
+    console.log(weekMeals);
+
+    
+};
+function nextDay() {
+    //this function resets dayMeals when we move on to the next day. For kval and soupval, they act as a cooldown to stop you from having consecutive soups.
+   // console.log("Current dayMeals");
+   // console.log(JSON.stringify(dayMeals));
+    dayMeals["vege"] = "-";
+    dayMeals["meat"] = "-";
+    dayMeals["soup"] = "-";
+    dayMeals["extra"]= "-";
+    dayMeals["vegeval"] = 0;
+    dayMeals["meatval"] = 0;
+    dayMeals["extraval"] = 0;
+    if (dayMeals["kval"] > 0){
+        dayMeals["kval"] = dayMeals["kval"] - 0.5;
+    } ;
+    if (dayMeals["soupval"] > 0){
+        dayMeals["soupval"] = dayMeals["soupval"] - 0.5;
+    };
+    console.log("resetting dayMeal");
+   // console.log("current state");
+   // console.log(JSON.stringify(dayMeals));
+};
+
+function planDay() {
+    //planDay creates one day worth of meals following the rules.
+    //randomly select one item, and it builds up the rest by randoming and checking
+var vegeRem,meatRem,soupRem,extraRem,kRem;
+vegeRem = 1.5; meatRem = 1.5;
+soupRem = 1; extraRem = 1; kRem = 1; //acceptable thresholds
+var plannedMeal;
+plannedMeal= dayMeals;    
+
+    //just setting the thresholds. this is inefficient, but at least it's clear.
+    vegeRem = vegeRem - plannedMeal["vegeval"];
+    meatRem = meatRem - plannedMeal["meatval"];
+    soupRem = soupRem - plannedMeal["soupval"];
+    extraRem = extraRem - plannedMeal["extraval"];
+    kRem = kRem - plannedMeal["kval"];
+  //  console.log("Remaining thresholds:" + " v: "+ vegeRem + " ,m: " + meatRem + " ,s: " + soupRem + " ,ex: " + extraRem + " ,k: " + kRem);
+    
+while(plannedMeal["vegeval"] < 1 || plannedMeal["meatval"] < 1){
+        // i have left out soup as a minimum requirement for now.
+         //minus off from leftover values for cooldown effects
+    var proposedDish;
+    proposedDish = testdb[Math.floor(Math.random()*testdb.length)];
+  //  console.log("Proposing:");
+  //  console.log(JSON.stringify(proposedDish));
+    //check values
+    var propVege = proposedDish["Vege"], propk = proposedDish["K"],propMeat = proposedDish["Meat"],propSoup=proposedDish["Soup"],propExtra = proposedDish["Extra"];
+    
+    if(propVege <= (1.5-plannedMeal["vegeval"]) && propMeat <= (1.5-plannedMeal["meatval"]) && propSoup<=(1 - plannedMeal["soupval"]) && propExtra <=(1-plannedMeal["extraval"]) && propk <= (1-plannedMeal["kval"])){
+        //proposed dish clears the limits. add into the meal
+        //updates the dayMeal values
+        plannedMeal["vegeval"] += propVege;
+        plannedMeal["meatval"] += propMeat;
+        plannedMeal["extraval"] += propExtra;
+        plannedMeal["kval"] += propk;
+        plannedMeal["soupval"] += propSoup;
+        //slot into the meal
+
+        
+        plannedMeal[proposedDish.Class.toLowerCase()] = proposedDish.Name;
+        
+    //    console.log(proposedDish.Name + " has been accepted into the plan.") 
+        
+        vegeRem = vegeRem - plannedMeal["vegeval"];
+        meatRem = meatRem - plannedMeal["meatval"];
+        soupRem = soupRem - plannedMeal["soupval"];
+        extraRem = extraRem - plannedMeal["extraval"];
+        kRem = kRem - plannedMeal["kval"];
+   //     console.log("Remaining thresholds:" + "v: "+ vegeRem + "m: " + meatRem + "s: " + soupRem + "ex: " + extraRem + "k: " + kRem);
+    } else {
+    //    console.log("Proposed Dish fails requirements. Retrying.")
+    };
+};     
+
+    //so the planning of the day should be done by now.
+    
+    dayMeals = plannedMeal;
+    console.log("Today's meals are: "  + JSON.stringify(dayMeals));
+
+    
+};    
+
+    //for this, put everything on an excel -> csv -> json
+var testdb = [
+  {
+    "Name": "Long Bean Egg",
+    "Class": "Extra",
+    "Vege": 0.5,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 1
+  },
+  {
+    "Name": "Fried Egg",
+    "Class": "Extra",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 0,
+    "Extra": 1
+  },
+  {
+    "Name": "Roast Pork",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Char Siew",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Black Sauce Egg",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0.5,
+    "Extra": 0
+  },
+  {
+    "Name": "Ginger Pork Slice",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Steamed Chicken",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Potato Minced Pork",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Tao Ki Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "ABC Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Watercress Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 1,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Egg Drop",
+    "Class": "Soup",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 1,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Kailan",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Spinach",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Cabbage",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Bean Sprouts",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Brocoli",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Chinese Cabbage",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Chye Sim",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Xiao Bai Cai",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Ladyfinger",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Sweet Potato Leaf",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Di Wang Cai",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Winter Melon Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Bittergourd with Egg",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Fried Rice",
+    "Class": "Extra",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 1,
+    "Extra": 1
+  },
+  {
+    "Name": "Mee Sua with Pork Balls",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 1
+  },
+  {
+    "Name": "Kuning Fried",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Steamed Pomfret",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Yellow Ginger Chicken",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Chicken Kaarage",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Midwings in Mushroom Sauce",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  }
+];
+    </script>
+    </body>
+</html>
