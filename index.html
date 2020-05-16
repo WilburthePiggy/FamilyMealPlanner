@@ -89,8 +89,14 @@
     
     
     <script>
+        
+var testweekMeals = [{day:"Monday", vege:"Kangkong Stir Fry", meat:"Steamed Chicken", soup:"-", extra:"Fried Egg"},{day:"Tuesday", vege:"Xiao Bai Cai", meat: "-", soup:"Black Sauce Egg", extra:"-"}]
+
+var dayMeals ={day:0,vege:"-",meat:"-",soup:"-",extra:"-",vegeval:0,meatval:0,extraval:0,kval:0,soupval:0};
+var weekMeals = [];
+        
 function Mealplan(){
-    weekMeals = [];
+    weekMeals.length = 0;
     createplan();
     assembleplan();
     
@@ -116,10 +122,7 @@ function assembleplan(){
              }
     ;};
         
-var testweekMeals = [{day:"Monday", vege:"Kangkong Stir Fry", meat:"Steamed Chicken", soup:"-", extra:"Fried Egg"},{day:"Tuesday", vege:"Xiao Bai Cai", meat: "-", soup:"Black Sauce Egg", extra:"-"}]
 
-var dayMeals ={day:0,vege:"-",meat:"-",soup:"-",extra:"-",vegeval:0,meatval:0,extraval:0,kval:0,soupval:0};
-var weekMeals = [];
         
 function sniffingdogg(){
     dayMeals.meat = "The doggo arrives";
