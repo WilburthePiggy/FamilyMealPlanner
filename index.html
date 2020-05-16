@@ -77,14 +77,14 @@
     </table>
     <button type="button" onclick="Mealplan()">It's Sunday and you don't know what to buy at the market...</button>
     
-    <button type="button" onclick="nextDay()">nextDay test</button>
+   <!-- <button type="button" onclick="nextDay()">nextDay test</button>
     
     <button type="button" onclick="planDay()">planDay</button>
     
     <button type="button" onclick="createplan()">create plan. It'll create a week's worth of food</button>
     
     <button type="button" onclick="sniffingdogg()"> tests are... </button>
-    <button type="button" onclick="Mealplan()">everything</button>
+    <button type="button" onclick="Mealplan()">everything</button> -->
     
     
     
@@ -240,9 +240,18 @@ while(plannedMeal["vegeval"] < 1 || plannedMeal["meatval"] < 1){
     //for this, put everything on an excel -> csv -> json
 var testdb = [
   {
-    "Name": "Long Bean Egg",
+    "Name": "Baked Bean Egg",
     "Class": "Extra",
-    "Vege": 0.5,
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 1
+  },
+  {
+    "Name": "Chye Po Egg",
+    "Class": "Extra",
+    "Vege": 0,
     "K": 0,
     "Meat": 0,
     "Soup": 0,
@@ -258,22 +267,31 @@ var testdb = [
     "Extra": 1
   },
   {
-    "Name": "Roast Pork",
-    "Class": "Meat",
-    "Vege": 0,
+    "Name": "Fried Rice",
+    "Class": "Extra",
+    "Vege": 1,
     "K": 0,
     "Meat": 1,
-    "Soup": 0,
-    "Extra": 0
+    "Soup": 1,
+    "Extra": 1
   },
   {
-    "Name": "Char Siew",
-    "Class": "Meat",
-    "Vege": 0,
+    "Name": "Long Bean Egg",
+    "Class": "Extra",
+    "Vege": 0.5,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 1
+  },
+  {
+    "Name": "Fried noodles",
+    "Class": "Extra",
+    "Vege": 1,
     "K": 0,
     "Meat": 1,
-    "Soup": 0,
-    "Extra": 0
+    "Soup": 1,
+    "Extra": 1
   },
   {
     "Name": "Black Sauce Egg",
@@ -282,6 +300,24 @@ var testdb = [
     "K": 0,
     "Meat": 1,
     "Soup": 0.5,
+    "Extra": 0
+  },
+  {
+    "Name": "Pork porridge",
+    "Class": "Extra",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 1
+  },
+  {
+    "Name": "Chicken Nugget",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
     "Extra": 0
   },
   {
@@ -294,7 +330,25 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Steamed Chicken",
+    "Name": "Fried whole Fish",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Midwing Mushroom Sauce",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Minced Pork Egg Tofu",
     "Class": "Meat",
     "Vege": 0,
     "K": 0,
@@ -312,7 +366,160 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Tao Ki Soup",
+    "Name": "Roast Pork Char Siew",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Steamed Chicken",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Yellow Ginger Chicken",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Tao Kua sliced pork",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 1,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Mala prawn",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Salmon",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Asparagus Prawnn",
+    "Class": "Meat",
+    "Vege": 0.5,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Brinjal Minced Pork",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Taiwan Sausage",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Hogdog",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Cheese Sausage",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Cheese Chicken Balls",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Green curry chicken",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Yellow curry chicken",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Fried whole Fish",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Steamed Fish",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Mala prawn",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "ABC Soup",
     "Class": "Soup",
     "Vege": 0,
     "K": 0,
@@ -321,10 +528,37 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "ABC Soup",
+    "Name": "Egg Drop soup",
+    "Class": "Soup",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 1,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Mee Sua with Pork Balls",
     "Class": "Soup",
     "Vege": 0,
     "K": 0,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 1
+  },
+  {
+    "Name": "Sharkfin Melon Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Tao Ki Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 1,
     "Meat": 0.5,
     "Soup": 1,
     "Extra": 0
@@ -339,39 +573,48 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Egg Drop",
+    "Name": "Winter Melon Soup",
     "Class": "Soup",
-    "Vege": 1,
-    "K": 1,
+    "Vege": 0,
+    "K": 0,
+    "Meat": 0.5,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "White Fungus Chicken Soup",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 0,
     "Meat": 1,
     "Soup": 1,
     "Extra": 0
   },
   {
-    "Name": "Kailan",
-    "Class": "Vege",
-    "Vege": 1,
-    "K": 1,
-    "Meat": 0,
-    "Soup": 0,
-    "Extra": 0
-  },
-  {
-    "Name": "Spinach",
-    "Class": "Vege",
-    "Vege": 1,
-    "K": 1,
-    "Meat": 0,
-    "Soup": 0,
-    "Extra": 0
-  },
-  {
-    "Name": "Cabbage",
-    "Class": "Vege",
-    "Vege": 1,
+    "Name": "Lotus Root Pork rib soup",
+    "Class": "Soup",
+    "Vege": 0,
     "K": 0,
     "Meat": 0,
-    "Soup": 0,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Tang Hoon Meat Balls",
+    "Class": "Soup",
+    "Vege": 0,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Sliced fish soup",
+    "Class": "Soup",
+    "Vege": 0.5,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 1,
     "Extra": 0
   },
   {
@@ -384,10 +627,28 @@ var testdb = [
     "Extra": 0
   },
   {
+    "Name": "Bittergourd with Egg",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
     "Name": "Brocoli",
     "Class": "Vege",
     "Vege": 1,
     "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Cabbage",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
     "Meat": 0,
     "Soup": 0,
     "Extra": 0
@@ -411,7 +672,16 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Xiao Bai Cai",
+    "Name": "Di Wang Cai",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Kailan",
     "Class": "Vege",
     "Vege": 1,
     "K": 1,
@@ -429,6 +699,15 @@ var testdb = [
     "Extra": 0
   },
   {
+    "Name": "Spinach",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
     "Name": "Sweet Potato Leaf",
     "Class": "Vege",
     "Vege": 1,
@@ -438,7 +717,7 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Di Wang Cai",
+    "Name": "Xiao Bai Cai",
     "Class": "Vege",
     "Vege": 1,
     "K": 1,
@@ -447,16 +726,7 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Winter Melon Soup",
-    "Class": "Soup",
-    "Vege": 0,
-    "K": 0,
-    "Meat": 0.5,
-    "Soup": 1,
-    "Extra": 0
-  },
-  {
-    "Name": "Bittergourd with Egg",
+    "Name": "Asparagus Ham",
     "Class": "Vege",
     "Vege": 1,
     "K": 0,
@@ -465,25 +735,178 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Fried Rice",
-    "Class": "Extra",
+    "Name": "Nai Bai",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Kang Kong",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Green Melon",
+    "Class": "Vege",
     "Vege": 1,
     "K": 0,
-    "Meat": 1,
-    "Soup": 1,
-    "Extra": 1
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
   },
   {
-    "Name": "Mee Sua with Pork Balls",
-    "Class": "Soup",
+    "Name": "Chayote",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Shang Hai Green",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Chap Chye",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Curry Ladyfingers",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Cucumber",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Pai Bo chye",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Bai Chye",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Yam",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 0,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Hairy Gourd Tanghoon",
+    "Class": "Vege",
+    "Vege": 1,
+    "K": 1,
+    "Meat": 0,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Fish cake",
+    "Class": "Meat",
     "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Sze chuan Pork rib soup",
+    "Class": "Soup",
+    "Vege": 0.5,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Sze chuan minced pork",
+    "Class": "Meat",
+    "Vege": 0.5,
     "K": 0,
     "Meat": 0.5,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Bak Kut Teh",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
     "Soup": 1,
+    "Extra": 0
+  },
+  {
+    "Name": "Luncheon meat",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Sardine with Onion",
+    "Class": "Meat",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
+    "Extra": 0
+  },
+  {
+    "Name": "Chicken Rice",
+    "Class": "Extra",
+    "Vege": 0,
+    "K": 0,
+    "Meat": 1,
+    "Soup": 0,
     "Extra": 1
   },
   {
-    "Name": "Kuning Fried",
+    "Name": "Black pepper beef",
     "Class": "Meat",
     "Vege": 0,
     "K": 0,
@@ -492,34 +915,34 @@ var testdb = [
     "Extra": 0
   },
   {
-    "Name": "Steamed Pomfret",
-    "Class": "Meat",
-    "Vege": 0,
+    "Name": "French bean with Ham",
+    "Class": "Vege",
+    "Vege": 1,
     "K": 0,
-    "Meat": 1,
+    "Meat": 0,
     "Soup": 0,
     "Extra": 0
   },
   {
-    "Name": "Yellow Ginger Chicken",
-    "Class": "Meat",
+    "Name": "Spagethi",
+    "Class": "Extra",
     "Vege": 0,
     "K": 0,
     "Meat": 1,
     "Soup": 0,
-    "Extra": 0
+    "Extra": 1
   },
   {
-    "Name": "Chicken Kaarage",
-    "Class": "Meat",
-    "Vege": 0,
-    "K": 0,
+    "Name": "Yong Tau Foo soup",
+    "Class": "Soup",
+    "Vege": 1,
+    "K": 1,
     "Meat": 1,
-    "Soup": 0,
+    "Soup": 1,
     "Extra": 0
   },
   {
-    "Name": "Midwings in Mushroom Sauce",
+    "Name": "Duck",
     "Class": "Meat",
     "Vege": 0,
     "K": 0,
@@ -528,6 +951,7 @@ var testdb = [
     "Extra": 0
   }
 ];
+        
     </script>
     </body>
 </html>

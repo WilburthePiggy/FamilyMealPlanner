@@ -29,6 +29,21 @@ Next steps:
 1. Live google-sheet json sauce https://www.freecodecamp.org/news/cjn-google-sheets-as-json-endpoint/
 2. freezing values
 3. CSS.
+
+--16/5/20 Saturday--
+https://spreadsheets.google.com/feeds/list/19hNEkTIdGchbbCHyzZCBpZidnI1WnCY9-rgO93lNVp4/od6/public/values?alt=json
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRl2LZIbrXFEHJNUalAm_ndTJd52E1t-KIMbf0Duu9XnFPYfqnCr9D1Q4ImmNQEMQVCkER6Ajc9I6rE/pubhtml
+
+https://docs.google.com/spreadsheets/d/19hNEkTIdGchbbCHyzZCBpZidnI1WnCY9-rgO93lNVp4/edit#gid=0
+
+sprsht id: 19hNEkTIdGchbbCHyzZCBpZidnI1WnCY9-rgO93lNVp4
+
+https://spreadsheets.google.com/feeds/worksheets/19hNEkTIdGchbbCHyzZCBpZidnI1WnCY9-rgO93lNVp4/public/basic?alt=json
+
+https://spreadsheets.google.com/feeds/list/19hNEkTIdGchbbCHyzZCBpZidnI1WnCY9-rgO93lNVp4/od6/public/values?alt=json
+
+https://docs.google.com/spreadsheets/d/19hNEkTIdGchbbCHyzZCBpZidnI1WnCY9-rgO93lNVp4/gviz/tq?tqx=out:csv
 ```
 
 [TOC]
